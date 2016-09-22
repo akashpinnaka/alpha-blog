@@ -15,8 +15,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new article_params
-    flash[:notice] = "Article was successfully created"
     if @article.save
+      flash[:notice] = "Article was successfully created"
       redirect_to article_path(@article)
     else
       render 'new'
@@ -48,6 +48,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(:id)
+    @article = Article.find(params[:id])
   end
 end
