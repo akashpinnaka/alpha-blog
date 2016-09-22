@@ -1,6 +1,8 @@
-<h2>Showing selected article</h2>
-<p>Title: <%= @article.title %></p>
-<p>Description: <%= @article.description %></p>
-
-<%= link_to "Edit Article", edit_article_path(@article) %>
-<%= link_to "Back to articles listing", articles_path %>
+<div class="well col-xs-8 col-xs-offset-2">
+  <h2 class="center"><strong><%= @article.title %></strong></h2>
+  <hr>
+  <%= simple_format @article.description %>
+  <%= link_to "Edit Article", edit_article_path(@article) %> | 
+  <%= link_to "Delete Article", @article, method: :delete, data: {confirm: "Are you sure?"} %> |
+  <%= link_to "View all articles", articles_path %>
+</div>
