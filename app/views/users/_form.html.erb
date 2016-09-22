@@ -38,7 +38,7 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <%= f.submit(@user.new_record? ? "sign up" : "Update account", class: 'btn brn-lg') %>
-          <%= link_to "Login", '#' %>
+          <%= link_to "Login", 'login_path' %>
         </div>
       </div>
     <% end %>
