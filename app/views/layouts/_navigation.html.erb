@@ -15,9 +15,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
           <!-- <li><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-          <li><%= link_to "Articles", articles_path, class: 'link-white' %></li>
-          <li><%= link_to "All bloggers", users_path, class: 'link-white' %></li>
-          <% if logged_in? %>
+        <li><%= link_to "Articles", articles_path, class: 'link-white' %></li>
+        <li><%= link_to "All bloggers", users_path, class: 'link-white' %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "All Categories", categories_path %></li>
+            <li role="separator" class="divider"></li>
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.name, category %></li>
+            <% end %>
+            <% if logged_in? && current_user.admin? %>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Create new category", new_category_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
             <ul class="dropdown-menu">
